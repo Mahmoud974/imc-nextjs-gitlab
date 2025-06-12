@@ -10,7 +10,7 @@ build:
   stage: build
   image: node:21
   script:
-    - npm run install
+    - npm install
     - npm run build
 
 test:
