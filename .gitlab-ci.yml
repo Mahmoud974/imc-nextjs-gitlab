@@ -1,11 +1,10 @@
 image: node:21
+
 stages:
   - build
   - test
   - package
   - deploy
-
-
 
 install:
   stage: build
@@ -18,23 +17,28 @@ install:
 build:
   stage: build
   script:
-    - ls -al
-  needs:
-    - install
- 
+    - npm run build    
+    - npm run export   
 
 test:
   stage: test
   script:
-    - ls -al
+    - ls -al         
 
 package:
   stage: package
   script:
-    - ls -al
+    - ls -al  
+
+build image:
+  stage: package
+  script:
+    - docker build -t simachille/front-imc:latest .             
+         
 
 deploy:
   stage: deploy
   script:
-     - ls -al
+   - ls -al 
+    
 
