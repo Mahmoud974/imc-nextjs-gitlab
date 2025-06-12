@@ -9,7 +9,8 @@ stages:
 build:
   stage: build
   script:
-    - echo "build"
+    - npm run install
+    - npm run build
 
 test:
   stage: test
