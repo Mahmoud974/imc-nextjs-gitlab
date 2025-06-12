@@ -7,14 +7,16 @@ stages:
 
 
 
+install:
+  stage: build
+  script:
+    - npm ci
+
 build:
   stage: build
   script:
-    - npm install
-    - npm run build
-  artifacts:
-    paths:
-      - .next
+    - ls -al
+ 
 
 test:
   stage: test
