@@ -16,6 +16,8 @@ build:
   stage: build
   script:
     - ls -al
+  needs:
+    - install
  
 
 test:
