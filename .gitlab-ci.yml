@@ -4,10 +4,7 @@ stages:
   - package
   - deploy
 
-check:
-  stage: check
-  script:
-    - ls -al
+
 
 build:
   stage: build
@@ -24,17 +21,8 @@ package:
   script:
     - echo "packaging..."
 
-build image:
-  stage: package
-  script:
-    - echo "build docker image..."
-
 deploy:
   stage: deploy
   script:
     - echo "deploying..."
 
-clean:
-  stage: cleanup
-  script:
-    - rm -rf *
