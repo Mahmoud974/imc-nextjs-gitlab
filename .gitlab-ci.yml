@@ -20,8 +20,13 @@ install:
     expire_in: 1 hour
 
 build:
+  variables:
+    PROJET_GROUP: simachille
+    PROJET_NAME: front-imc
+    PROJET_VERSION: latest
   stage: build
   script:
+ 
     - npm run build
     - npm run export
     - mkdir -p dist
@@ -39,7 +44,7 @@ test:
 package:
   stage: package
   script:
-    - docker build -t simachille/front-imc:latest .
+    - docker build -t $PROJET_GROUP/$PROJET_NAME:$PROJET_VERSION .
 
 deploy:
   stage: deploy
