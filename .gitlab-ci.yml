@@ -1,13 +1,15 @@
 stages:
+  - check
+  - build
+  - test
   - package
+  - deploy
+  - cleanup
+
 check:
   stage: check
   script:
     - ls -al
-clean:
-  stage: .post
-  script:
-    - rm -rf *
 
 build:
   stage: build
@@ -22,15 +24,19 @@ test:
 package:
   stage: package
   script:
-    - echo "test"
+    - echo "packaging..."
 
 build image:
   stage: package
   script:
-    - echo "test"
+    - echo "build docker image..."
 
 deploy:
   stage: deploy
   script:
-    - echo "test"
-  
+    - echo "deploying..."
+
+clean:
+  stage: cleanup
+  script:
+    - rm -rf *
