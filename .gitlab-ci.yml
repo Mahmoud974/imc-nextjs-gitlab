@@ -16,15 +16,15 @@ build:
 test:
   stage: test
   script:
-    - echo "test"
+    - ls -al
 
 package:
   stage: package
   script:
-    - echo "packaging..."
+    - ls -al
 
 deploy:
   stage: deploy
   script:
-    - echo "deploying..."
+     - ls -al
 
