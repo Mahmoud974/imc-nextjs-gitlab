@@ -10,9 +10,10 @@ stages:
 install:
   stage: build
   script:
-    - ls -al
     - npm ci
-    - ls -al
+  artifacts:
+    paths:
+      - node_modules/
 
 build:
   stage: build
