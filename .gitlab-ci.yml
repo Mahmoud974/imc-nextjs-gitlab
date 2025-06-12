@@ -1,24 +1,35 @@
 image: node:21
 
 stages:
+  - install
   - build
   - test
   - package
   - deploy
 
+variables:
+  NODE_ENV: production
+
 install:
-  stage: build
+  stage: install
   script:
     - npm ci
   artifacts:
     paths:
       - node_modules/
+      - .next/
+      - out/
+    expire_in: 1 hour
 
 build:
   stage: build
   script:
     - npm run build    
-    - npm run export   
+    - npm run export
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 hour
 
 test:
   stage: test
@@ -28,17 +39,9 @@ test:
 package:
   stage: package
   script:
-    - ls -al  
-
-build image:
-  stage: package
-  script:
-    - docker build -t simachille/front-imc:latest .             
-         
+    - docker build -t simachille/front-imc:latest .
 
 deploy:
   stage: deploy
   script:
-   - ls -al 
-    
-
+    - echo "Déploiement en cours..."

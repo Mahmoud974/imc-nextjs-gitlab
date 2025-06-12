@@ -1,21 +1,15 @@
-# Dockerfile
+# Étape 1 : Build Next.js
+FROM node:21 as builder
 
-# FROM node:21 as builder
+WORKDIR /app
 
-# WORKDIR /app
+COPY . .
 
-# COPY . .
+RUN npm ci
+RUN npm run build
+RUN npm run export
 
-# RUN npm ci
-# RUN npm run build
-# RUN npm run export
-
-# # Copier le dossier `out` généré dans le conteneur Nginx
-# COPY --from=builder /app/out /usr/share/nginx/html
-
+# Étape 2 : NGINX pour servir le site statique
 FROM nginx:1.27-alpine
 
-# Copier le dossier `out` généré dans le conteneur Nginx
-COPY  dist /usr/share/nginx/html
-
-
+COPY --from=builder /app/out /usr/share/nginx/html

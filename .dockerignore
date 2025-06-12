@@ -1,3 +1,12 @@
-
+# Ignore tout par défaut
 *
-!/dist
+
+# Autorise uniquement les fichiers nécessaires au build
+!package.json
+!package-lock.json
+!next.config.js
+!public
+!dist
+!out
+!pages
+!styles
