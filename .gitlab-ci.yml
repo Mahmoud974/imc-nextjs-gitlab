@@ -14,7 +14,7 @@ build:
     - npm run build
   artifacts:
     paths:
-      - dist/
+      - .next
 
 test:
   stage: test
