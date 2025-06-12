@@ -1,12 +1,13 @@
-# Ignore tout par défaut
 *
 
-# Autorise uniquement les fichiers nécessaires au build
 !package.json
 !package-lock.json
 !next.config.js
+!postcss.config.js
+!tailwind.config.js
 !public
-!dist
-!out
 !pages
 !styles
+!app
+!out
+!dist

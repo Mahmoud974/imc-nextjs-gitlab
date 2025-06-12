@@ -17,15 +17,15 @@ install:
   artifacts:
     paths:
       - node_modules/
-      - .next/
-      - out/
     expire_in: 1 hour
 
 build:
   stage: build
   script:
-    - npm run build    
+    - npm run build
     - npm run export
+    - mkdir -p dist
+    - cp -r out/* dist/
   artifacts:
     paths:
       - dist/
@@ -34,7 +34,7 @@ build:
 test:
   stage: test
   script:
-    - ls -al         
+    - ls -al
 
 package:
   stage: package
