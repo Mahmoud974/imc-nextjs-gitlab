@@ -1,10 +1,8 @@
 stages:
-  - check
   - build
   - test
   - package
   - deploy
-  - cleanup
 
 check:
   stage: check
